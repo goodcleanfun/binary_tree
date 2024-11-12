@@ -145,8 +145,7 @@ void BST_FUNC(rotate_right)(BST_NODE_TYPE *node) {
     node->right->key = tmp_key;
 }
 
-#ifdef BST_VALUE_TYPE
-BST_VALUE_TYPE *BST_FUNC(search)(BST_NODE_TYPE *node, BST_KEY_TYPE key) {
+void *BST_FUNC(search)(BST_NODE_TYPE *node, BST_KEY_TYPE key) {
     BST_NODE_TYPE *tmp_node = node;
     BST_KEY_TYPE tmp_key = node->key;
 
@@ -161,13 +160,11 @@ BST_VALUE_TYPE *BST_FUNC(search)(BST_NODE_TYPE *node, BST_KEY_TYPE key) {
 
     if (BST_KEY_EQUALS(key, tmp_node->key)) {
         // value pointer is stored on the left key of a leaf node
-        return (BST_VALUE_TYPE *)tmp_node->left;
+        return (void *)tmp_node->left;
     } else {
         return NULL;
     }
 }
-#endif
-
 
 #undef BST_CONCAT_
 #undef BST_CONCAT
