@@ -1,6 +1,6 @@
 {
     "name": "binary_tree",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "repo": "goodcleanfun/binary_tree",
     "description": "Common functions for binary search trees",
     "keywords": ["tree", "binary tree", "search tree", "binary search tree"],
