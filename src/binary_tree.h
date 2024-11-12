@@ -69,10 +69,10 @@ static inline bool BST_TYPED(key_less_than)(BST_KEY_TYPE key, BST_KEY_TYPE node_
 #endif
 
 #ifndef BST_KEY_EQUALS
-static inline bool BST_TYPED(key_equal)(BST_KEY_TYPE key, BST_KEY_TYPE node_key) {
+static inline bool BST_TYPED(key_equals)(BST_KEY_TYPE key, BST_KEY_TYPE node_key) {
     return key == node_key;
 }
-#define BST_KEY_EQUALS BST_TYPED(key_equal)
+#define BST_KEY_EQUALS BST_TYPED(key_equals)
 #endif
 
 static inline bool BST_FUNC(node_is_leaf)(BST_NODE_TYPE *node) {
