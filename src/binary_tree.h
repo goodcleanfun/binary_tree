@@ -1,6 +1,9 @@
 #ifndef BST_H
 #define BST_H
 
+#include <stdbool.h>
+#include <stddef.h>
+
 #endif
 
 #ifndef BST_NAME
@@ -34,6 +37,31 @@ typedef struct BST_TYPED(node) {
 #define NO_BST_NODE_TYPE_DEFINED
 #endif
 
+typedef struct BST_TYPED(stack) {
+    BST_TYPED(node_t) *stack[BST_MAX_HEIGHT];
+    size_t stack_size;
+} BST_TYPED(stack_t);
+
+bool BST_FUNC(stack_push)(BST_TYPED(stack_t) *stack, BST_TYPED(node_t) *node) {
+    if (stack->stack_size >= BST_MAX_HEIGHT) return false;
+    stack->stack[stack->stack_size++] = node;
+    return true;
+}
+
+BST_TYPED(node_t) *BST_FUNC(stack_pop)(BST_TYPED(stack_t) *stack) {
+    if (stack->stack_size == 0) return NULL;
+    return stack->stack[--stack->stack_size];
+}
+
+bool BST_FUNC(stack_empty)(BST_TYPED(stack_t) *stack) {
+    return stack->stack_size == 0;
+}
+
+void BST_FUNC(stack_clear)(BST_TYPED(stack_t) *stack) {
+    stack->stack_size = 0;
+}
+
+
 #ifndef BST_KEY_LESS_THAN
 static inline bool BST_TYPED(key_less_than)(BST_KEY_TYPE key, BST_KEY_TYPE node_key) {
     return key < node_key;
@@ -58,6 +86,20 @@ static inline bool BST_FUNC(node_is_leaf)(BST_NODE_TYPE *node) {
 static inline bool BST_FUNC(node_is_internal)(BST_NODE_TYPE *node) {
     return node->right != NULL;
 }
+
+static inline BST_TYPED(node_t) *BST_FUNC(candidate_leaf)(BST_TYPED(node_t) *node, BST_KEY_TYPE key, BST_TYPED(stack_t) *stack) {
+    BST_TYPED(node_t) *tmp_node = node;
+    while (BST_FUNC(node_is_internal)(tmp_node)) {
+        if (!BST_FUNC(stack_push(stack, tmp_node))) return NULL;
+        if (BST_KEY_LESS_THAN(key, tmp_node->key)) {
+            tmp_node = tmp_node->left;
+        } else {
+            tmp_node = tmp_node->right;
+        }
+    }
+    return tmp_node;
+}
+
 
 void BST_FUNC(rotate_left)(BST_NODE_TYPE *node) {
     /*
