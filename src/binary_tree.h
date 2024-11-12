@@ -25,6 +25,9 @@ typedef struct BST_TYPED(node) {
     BST_KEY_TYPE key;
     struct BST_TYPED(node) *left;
     struct BST_TYPED(node) *right;
+#ifdef BST_NODE_EXTRA
+    BST_NODE_EXTRA
+#endif
 } BST_TYPED(node_t);
 
 #define BST_NODE_TYPE BST_TYPED(node_t)

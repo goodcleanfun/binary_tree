@@ -9,6 +9,8 @@
 #define BST_NAME binary_tree
 #define BST_KEY_TYPE uint32_t
 #define BST_VALUE_TYPE char *
+#define BST_NODE_EXTRA \
+    uint8_t height;
 #include "binary_tree.h"
 #undef BST_NAME
 #undef BST_KEY_TYPE
