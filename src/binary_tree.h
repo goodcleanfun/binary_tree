@@ -34,7 +34,6 @@ typedef struct BST_TYPED(node) {
 } BST_TYPED(node_t);
 
 #define BST_NODE_TYPE BST_TYPED(node_t)
-#define NO_BST_NODE_TYPE_DEFINED
 #endif
 
 typedef struct BST_TYPED(stack) {
@@ -67,7 +66,6 @@ static inline bool BST_TYPED(key_less_than)(BST_KEY_TYPE key, BST_KEY_TYPE node_
     return key < node_key;
 }
 #define BST_KEY_LESS_THAN BST_TYPED(key_less_than)
-#define NO_BST_KEY_LESS_THAN_DEFINED
 #endif
 
 #ifndef BST_KEY_EQUALS
@@ -75,8 +73,6 @@ static inline bool BST_TYPED(key_equal)(BST_KEY_TYPE key, BST_KEY_TYPE node_key)
     return key == node_key;
 }
 #define BST_KEY_EQUALS BST_TYPED(key_equal)
-#define NO_BST_KEY_EQUALS_THAN_DEFINED
-
 #endif
 
 static inline bool BST_FUNC(node_is_leaf)(BST_NODE_TYPE *node) {
@@ -177,15 +173,3 @@ BST_VALUE_TYPE *BST_FUNC(search)(BST_NODE_TYPE *node, BST_KEY_TYPE key) {
 #undef BST_CONCAT
 #undef BST_TYPED
 #undef BST_FUNC
-#ifdef NO_BST_NODE_TYPE_DEFINED
-#undef BST_NODE_TYPE
-#undef NO_BST_NODE_TYPE_DEFINED
-#endif
-#ifdef NO_BST_KEY_EQUALS_DEFINED
-#undef BST_KEY_EQUALS
-#undef NO_BST_KEY_EQUALS_DEFINED
-#endif
-#ifdef NO_BST_KEY_LESS_THAN_DEFINED
-#undef BST_KEY_LESS_THAN
-#undef NO_BST_KEY_LESS_THAN_DEFINED
-#endif
