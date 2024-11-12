@@ -76,6 +76,18 @@ TEST test_bst(void) {
     d = binary_tree_search(root, 7);
     ASSERT_STR_EQ(*d, "d");
 
+    binary_tree_stack_t stack = (binary_tree_stack_t){
+        .stack = {NULL},
+        .stack_size = 0
+    };
+    binary_tree_node_t *candidate;
+
+    candidate = binary_tree_candidate_leaf(root, 1, &stack);
+    ASSERT_EQ(candidate, node1);
+    ASSERT_EQ(stack.stack_size, 2);
+    ASSERT_EQ(binary_tree_stack_pop(&stack)->key, 2);
+    ASSERT_EQ(binary_tree_stack_pop(&stack)->key, 4);
+
     binary_tree_rotate_left(root);
     /*
     Now tree should be in this state:
@@ -107,6 +119,12 @@ TEST test_bst(void) {
     d = binary_tree_search(root, 7);
     ASSERT_STR_EQ(*d, "d");
 
+    candidate = binary_tree_candidate_leaf(root, 3, &stack);
+    ASSERT_EQ(candidate, node3);
+    ASSERT_EQ(stack.stack_size, 3);
+    ASSERT_EQ(binary_tree_stack_pop(&stack)->key, 2);
+    ASSERT_EQ(binary_tree_stack_pop(&stack)->key, 4);
+    ASSERT_EQ(binary_tree_stack_pop(&stack)->key, 6);
 
     binary_tree_rotate_right(root);
     // Tree should be in the original state
@@ -158,6 +176,13 @@ TEST test_bst(void) {
     ASSERT_STR_EQ(*c, "c");
     d = binary_tree_search(root, 7);
     ASSERT_STR_EQ(*d, "d");
+
+    candidate = binary_tree_candidate_leaf(root, 7, &stack);
+    ASSERT_EQ(candidate, node7);
+    ASSERT_EQ(stack.stack_size, 3);
+    ASSERT_EQ(binary_tree_stack_pop(&stack)->key, 6);
+    ASSERT_EQ(binary_tree_stack_pop(&stack)->key, 4);
+    ASSERT_EQ(binary_tree_stack_pop(&stack)->key, 2);
 
     PASS();
 }
