@@ -99,7 +99,7 @@ static inline BST_TYPED(node_t) *BST_FUNC(candidate_leaf)(BST_TYPED(node_t) *nod
 
 void BST_FUNC(rotate_left)(BST_NODE_TYPE *node) {
     /*
-    Left rotation (rotate a to the left)
+    Left rotation (rotate b to the left)
 
           b                   c
         /   \               /   \
@@ -123,7 +123,7 @@ void BST_FUNC(rotate_left)(BST_NODE_TYPE *node) {
 
 void BST_FUNC(rotate_right)(BST_NODE_TYPE *node) {
     /*
-    Left rotation (rotate a to the left)
+    Right rotation (rotate c to the right)
 
             c                 b
           /   \             /   \ 
