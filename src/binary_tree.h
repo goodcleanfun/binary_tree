@@ -75,6 +75,7 @@ static inline bool BST_TYPED(key_equals)(BST_KEY_TYPE key, BST_KEY_TYPE node_key
 #define BST_KEY_EQUALS BST_TYPED(key_equals)
 #endif
 
+#ifndef BST_CUSTOM_LEAF
 static inline bool BST_FUNC(node_is_leaf)(BST_NODE_TYPE *node) {
     return node->right == NULL;
 }
@@ -95,6 +96,7 @@ static inline BST_TYPED(node_t) *BST_FUNC(candidate_leaf)(BST_TYPED(node_t) *nod
     }
     return tmp_node;
 }
+#endif
 
 
 void BST_FUNC(rotate_left)(BST_NODE_TYPE *node) {
@@ -145,6 +147,7 @@ void BST_FUNC(rotate_right)(BST_NODE_TYPE *node) {
     node->right->key = tmp_key;
 }
 
+#ifndef BST_CUSTOM_SEARCH
 void *BST_FUNC(search)(BST_NODE_TYPE *node, BST_KEY_TYPE key) {
     BST_NODE_TYPE *tmp_node = node;
     BST_KEY_TYPE tmp_key = node->key;
@@ -165,6 +168,7 @@ void *BST_FUNC(search)(BST_NODE_TYPE *node, BST_KEY_TYPE key) {
         return NULL;
     }
 }
+#endif
 
 #undef BST_CONCAT_
 #undef BST_CONCAT
