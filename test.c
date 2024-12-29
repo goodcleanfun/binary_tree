@@ -66,13 +66,13 @@ TEST test_bst(void) {
 
     char *a, *b, *c, *d;
 
-    a = binary_tree_search(root, 1);
+    a = binary_tree_get(root, 1);
     ASSERT_STR_EQ(a, "a");
-    b = binary_tree_search(root, 3);
+    b = binary_tree_get(root, 3);
     ASSERT_STR_EQ(b, "b");
-    c = binary_tree_search(root, 5);
+    c = binary_tree_get(root, 5);
     ASSERT_STR_EQ(c, "c");
-    d = binary_tree_search(root, 7);
+    d = binary_tree_get(root, 7);
     ASSERT_STR_EQ(d, "d");
 
     binary_tree_stack_t stack = (binary_tree_stack_t){
@@ -109,13 +109,13 @@ TEST test_bst(void) {
     ASSERT_EQ(root->left->left->left->key, 1);
     ASSERT_EQ(root->left->left->right->key, 3);
 
-    a = binary_tree_search(root, 1);
+    a = binary_tree_get(root, 1);
     ASSERT_STR_EQ(a, "a");
-    b = binary_tree_search(root, 3);
+    b = binary_tree_get(root, 3);
     ASSERT_STR_EQ(b, "b");
-    c = binary_tree_search(root, 5);
+    c = binary_tree_get(root, 5);
     ASSERT_STR_EQ(c, "c");
-    d = binary_tree_search(root, 7);
+    d = binary_tree_get(root, 7);
     ASSERT_STR_EQ(d, "d");
 
     candidate = binary_tree_candidate_leaf(root, 3, &stack);
@@ -136,13 +136,13 @@ TEST test_bst(void) {
     ASSERT_EQ(root->right->left->key, 5);
     ASSERT_EQ(root->right->right->key, 7);
 
-    a = binary_tree_search(root, 1);
+    a = binary_tree_get(root, 1);
     ASSERT_STR_EQ(a, "a");
-    b = binary_tree_search(root, 3);
+    b = binary_tree_get(root, 3);
     ASSERT_STR_EQ(b, "b");
-    c = binary_tree_search(root, 5);
+    c = binary_tree_get(root, 5);
     ASSERT_STR_EQ(c, "c");
-    d = binary_tree_search(root, 7);
+    d = binary_tree_get(root, 7);
     ASSERT_STR_EQ(d, "d");
 
     binary_tree_rotate_right(root);
@@ -167,13 +167,13 @@ TEST test_bst(void) {
     ASSERT_EQ(root->right->right->left->key, 5);
     ASSERT_EQ(root->right->right->right->key, 7);
 
-    a = binary_tree_search(root, 1);
+    a = binary_tree_get(root, 1);
     ASSERT_STR_EQ(a, "a");
-    b = binary_tree_search(root, 3);
+    b = binary_tree_get(root, 3);
     ASSERT_STR_EQ(b, "b");
-    c = binary_tree_search(root, 5);
+    c = binary_tree_get(root, 5);
     ASSERT_STR_EQ(c, "c");
-    d = binary_tree_search(root, 7);
+    d = binary_tree_get(root, 7);
     ASSERT_STR_EQ(d, "d");
 
     candidate = binary_tree_candidate_leaf(root, 7, &stack);

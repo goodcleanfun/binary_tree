@@ -147,8 +147,7 @@ void BST_FUNC(rotate_right)(BST_NODE_TYPE *node) {
     node->right->key = tmp_key;
 }
 
-#ifndef BST_CUSTOM_SEARCH
-void *BST_FUNC(search)(BST_NODE_TYPE *node, BST_KEY_TYPE key) {
+void *BST_FUNC(get)(BST_NODE_TYPE *node, BST_KEY_TYPE key) {
     BST_NODE_TYPE *tmp_node = node;
     BST_KEY_TYPE tmp_key = node->key;
 
@@ -168,7 +167,6 @@ void *BST_FUNC(search)(BST_NODE_TYPE *node, BST_KEY_TYPE key) {
         return NULL;
     }
 }
-#endif
 
 #undef BST_CONCAT_
 #undef BST_CONCAT
